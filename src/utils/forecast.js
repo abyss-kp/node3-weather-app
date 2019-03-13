@@ -7,10 +7,14 @@ const forecast = (long, lat, callback) => {
         } else if (body.error) {
             callback(body.error, undefined)
         } else {
-            const degreeC = parseInt(((parseInt(body.currently.temperature) - 32) * 5) / 9);
-            callback('', "It is currently " + degreeC +
-                " degree Celcius out there and there are " + body.currently.precipProbability +
-                " chances of rain")
+            const temp = parseInt(((parseInt(body.currently.temperature) - 32) * 5) / 9);
+            const tempHigh = parseInt(((parseInt(body.daily.data[0].temperatureHigh) - 32) * 5) / 9);
+            const tempLow = parseInt(((parseInt(body.daily.data[0].temperatureLow) - 32) * 5) / 9);
+            callback('', "It is currently " + temp +
+                "℃  out and the high today is " + tempHigh +
+                " ℃ with a low of " + tempLow +
+                " ℃ . There are " + body.currently.precipProbability +
+                "% chances of rain")
         }
     })
 }
