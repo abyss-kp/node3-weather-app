@@ -10,11 +10,11 @@ const forecast = (long, lat, callback) => {
             const temp = parseInt(((parseInt(body.currently.temperature) - 32) * 5) / 9);
             const tempHigh = parseInt(((parseInt(body.daily.data[0].temperatureHigh) - 32) * 5) / 9);
             const tempLow = parseInt(((parseInt(body.daily.data[0].temperatureLow) - 32) * 5) / 9);
-            callback('', "It is currently " + temp +
-                "℃  out and the high today is " + tempHigh +
-                " ℃ with a low of " + tempLow +
+            callback('', "Current temperature is :" + temp +
+                " ℃ . Today's highest temperature is :" + tempHigh +
+                " ℃ . Today's lowest temperature is :" + tempLow +
                 " ℃ . There are " + body.currently.precipProbability +
-                "% chances of rain")
+                "% chances of rain", temp, tempHigh, tempLow)
         }
     })
 }
